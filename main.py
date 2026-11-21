@@ -6,20 +6,26 @@ Plain standard library only; no network, no randomness — same bytes every run.
 
 from pathlib import Path
 
-LINES = [
+KEEPER_STANZA = [
     "Somewhere a lighthouse keeper is making tea.",
     "The storm is doing what storms do.",
     "He is not watching it. He is watching the kettle.",
+]
+
+LIGHT_STANZA = [
     "The light turns by itself, the way it has every night he was ever afraid.",
     "It will turn tonight, too.",
     "So will you.",
 ]
 
+STANZAS = [KEEPER_STANZA, LIGHT_STANZA]
+
 ENTRY_PATH = Path("/output/entry.txt")
 
 
 def render() -> str:
-    return "\n".join(LINES)
+    lines = [line for stanza in STANZAS for line in stanza]
+    return "\n".join(lines)
 
 
 def main() -> None:
